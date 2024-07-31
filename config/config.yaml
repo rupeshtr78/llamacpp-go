@@ -1,0 +1,21 @@
+
+servers:
+  - name: llm_server
+    model: /path/to/your/model.gguf
+    host: 0.0.0.0
+    port: 50051
+    threads: 40
+    ctx_size: 2048
+    batch_size: 512
+    embedding: false
+    api_key: your_api_key
+  - name: embedding_server
+    model: /path/to/your/model.gguf
+    host: 0.0.0.0
+    port: 50051
+    threads: 40
+    ctx_size: 2048
+    batch_size: 512
+    embedding: true
+    api_key: your_api_key
+

@@ -287,3 +287,8 @@ export-lora:
   -t,    --threads N              number of threads to use during computation (default: 40)
   -o,    --output FNAME           output file (default: 'ggml-lora-merged-f16.gguf')
 
+
+curl -X POST "http://0.0.0.0:8080/embeddings" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer your_api_key" \
+-d '{"input": "Your text document goes here"}'
