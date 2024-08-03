@@ -19,7 +19,7 @@ servers:
     embedding: true
     api_key: your_api_key
   - name: llm_server_v2
-    model: /path/to/your/model.gguf  # Model path
+    model: /data/ai/lmstudio/lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF/Meta-Llama-3.1-8B-Instruct-Q8_0.gguf  # Model path
     host: 0.0.0.0  # Host address
     port: 50054  # Port number
     threads: 40  # Number of threads
