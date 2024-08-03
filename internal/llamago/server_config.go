@@ -66,7 +66,7 @@ func (m ModelConfig) GetArguments() []string {
 		prompt := m.Prompt
 		// add double quotes aroung the prompt string
 		promptStr := `"` + prompt + `"`
-		if argName == "--prompt" {
+		if m.Prompt != "" {
 			args = append(args, argName, promptStr)
 			continue
 		}
