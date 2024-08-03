@@ -11,7 +11,7 @@ func main() {
 
 	llamaServers := []string{}
 	llamaServers = append(llamaServers, "llm_server_v2")
-	// llamaServers = append(llamaServers, "llm_cli_v2")
+	// llamaServers = append(llamaServers, "embedding_server")
 
 	var wg sync.WaitGroup
 	errChan := make(chan error, len(llamaServers))
