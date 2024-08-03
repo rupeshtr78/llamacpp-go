@@ -41,7 +41,7 @@ servers:
     ctx_size: 2048  # Context size
     batch_size: 512  # Batch size
     embedding: false  # Enable embedding
-    api_key: your_api_key  # API key
+    # api_key: your_api_key  # API key
     verbose: true  # Verbose output
     seed: 1234  # RNG seed
     system-prompt-file: internal/prompts/system_prompt_llm_expert.txt  # System prompt file
