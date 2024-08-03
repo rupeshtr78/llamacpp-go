@@ -20,6 +20,9 @@ func (l *LlamaModelStrategy) Execute() error {
 	log.Info().Msgf("Executing llama-cli with args: %v", args)
 
 	cmd := exec.Command(constants.LlamaCppCli, args...)
+	log.Info().Msgf("Running executable %s", constants.LlamaCppCli)
+	log.Debug().Msgf("Command: %v", cmd.String())
+
 	err := cmd.Run()
 	if err != nil {
 		log.Error().Err(err).Msgf("Failed to run %s", constants.LlamaCppServer)
