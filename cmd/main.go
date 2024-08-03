@@ -10,12 +10,15 @@ import (
 func main() {
 	fmt.Println("Hello, llama-go")
 
-	errChan := make(chan error)
-	go func(name string) {
-		errChan <- llamago.LlamaRun(name)
-	}("llm_server")
+	serverName := "llm_server_v2"
 
-	err := <-errChan
+	// errChan := make(chan error)
+	// go func(name string) {
+	// 	errChan <- llamago.LlamaRun(name)
+	// }(serverName)
+
+	// err := <-errChan
+	err := llamago.LlamaRun(serverName)
 	if err != nil {
 		log.Fatal().Msgf("Error running llama-go, %v", err)
 	}

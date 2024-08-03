@@ -9,15 +9,25 @@ type ServerConfig struct {
 }
 
 type ModelConfig struct {
-	Name      string `mapstructure:"name"`
-	Model     string `mapstructure:"model"`
-	Host      string `mapstructure:"host"`
-	Port      string `mapstructure:"port"`
-	Threads   string `mapstructure:"threads"`
-	CtxSize   string `mapstructure:"ctx_size"`
-	BatchSize string `mapstructure:"batch_size"`
-	Embedding bool   `mapstructure:"embedding"`
-	APIKey    string `mapstructure:"api_key"`
+	Name             string `mapstructure:"name"`
+	Model            string `mapstructure:"model"`
+	Host             string `mapstructure:"host"`
+	Port             string `mapstructure:"port"`
+	Threads          string `mapstructure:"threads"`
+	CtxSize          string `mapstructure:"ctx_size"`
+	BatchSize        string `mapstructure:"batch_size"`
+	Embedding        bool   `mapstructure:"embedding"`
+	APIKey           string `mapstructure:"api_key"`
+	Verbose          bool   `mapstructure:"verbose"`
+	Seed             string `mapstructure:"seed"`
+	SystemPromptFile string `mapstructure:"system-prompt-file"`
+	ChatTemplate     string `mapstructure:"chat-template"`
+	Prompt           string `mapstructure:"prompt"`
+	Temperature      string `mapstructure:"temperature"`
+	TopK             string `mapstructure:"top-k"`
+	TopP             string `mapstructure:"top-p"`
+	RepeatPenalty    string `mapstructure:"repeat_penalty"`
+	GPULayers        string `mapstructure:"gpu-layers"`
 }
 
 func (m ModelConfig) GetArguments() []string {
@@ -44,8 +54,20 @@ func (m ModelConfig) GetArguments() []string {
 			continue
 		}
 
-		if argValue.String() != "" {
-			args = append(args, argName, argValue.String())
+		if argName == "--verbose" && argValue.Bool() {
+			args = append(args, argName)
+			continue
+		}
+
+		if argName == "--name" {
+			continue
+		}
+
+		// convert the value to a string
+		argValueStr := argValue.String()
+
+		if argValueStr != "" {
+			args = append(args, argName, argValueStr)
 		}
 
 	}

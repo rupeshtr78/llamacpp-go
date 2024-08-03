@@ -1,6 +1,7 @@
-package llamago
+package tests
 
 import (
+	"llama-go/internal/llamago"
 	"log"
 	"os/exec"
 
@@ -18,7 +19,7 @@ func LlamaMain() {
 		log.Fatalf("Error reading config file: %s", err)
 	}
 
-	config := ServerConfig{}
+	config := llamago.ServerConfig{}
 	err := viper.Unmarshal(&config)
 	if err != nil {
 		log.Fatalf("Unable to decode into struct, %v", err)
@@ -31,7 +32,8 @@ func LlamaMain() {
 	}
 
 	// Get the first server based on name
-	var m ModelConfig
+
+	var m llamago.ModelConfig
 	for _, s := range server {
 		if s.Name == "llm_server" {
 			m = s
