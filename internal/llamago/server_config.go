@@ -2,6 +2,8 @@ package llamago
 
 import (
 	"reflect"
+
+	"github.com/rs/zerolog/log"
 )
 
 type ServerConfig struct {
@@ -60,6 +62,17 @@ func (m ModelConfig) GetArguments() []string {
 		}
 
 		if argName == "--name" {
+			continue
+		}
+
+		prompt := m.Prompt
+		// add double quotes aroung the prompt string
+		promptStr := "\"" + prompt + "\""
+		if argName == "--prompt" && argValue.String() == "" {
+			log.Error().Msgf("Prompt is required")
+			return []string{}
+		} else if argName == "--prompt" {
+			args = append(args, argName, promptStr)
 			continue
 		}
 
