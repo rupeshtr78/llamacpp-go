@@ -1,6 +1,6 @@
 # llamacpp-go
 
-`llama.cpp` is a application designed to interact with LLM (Large Language Model) servers. This repo provides an easy way to configure and run the server with arguments defined in config file. It uses configuration files to define server settings and executes commands to run llma.cpp servers.
+`llama.cpp` is a application designed to interact with LLM (Large Language Model) servers. This repo provides an easy way to configure and run the server with arguments defined in config file. It uses configuration files to define server settings and executes os commands to run llama.cpp servers.
 
 ## Basic Usage
 ```

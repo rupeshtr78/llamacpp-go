@@ -3,24 +3,34 @@ package main
 import (
 	"fmt"
 	"llama-go/internal/llamago"
-
-	"github.com/rs/zerolog/log"
+	"sync"
 )
 
 func main() {
 	fmt.Println("Hello, llama-go")
 
-	serverName := "llm_server_v2"
+	llamaServers := []string{}
+	llamaServers = append(llamaServers, "llm_server_v2")
 
-	errChan := make(chan error)
-	go func(name string) {
-		errChan <- llamago.LlamaRun(name)
-	}(serverName)
+	var wg sync.WaitGroup
+	errChan := make(chan error, len(llamaServers))
 
-	err := <-errChan
-	// err := llamago.LlamaRun(serverName)
-	if err != nil {
-		log.Fatal().Msgf("Error running llama-go, %v", err)
+	for _, serverName := range llamaServers {
+		wg.Add(1)
+		go func(name string) {
+			defer wg.Done()
+			errChan <- llamago.LlamaRun(name)
+		}(serverName)
+
+	}
+
+	wg.Wait()
+	close(errChan)
+
+	for err := range errChan {
+		if err != nil {
+			fmt.Println(err)
+		}
 	}
 
 }
