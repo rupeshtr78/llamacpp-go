@@ -2,6 +2,14 @@
 
 `llama.cpp` is a application designed to interact with LLM (Large Language Model) servers. This repo provides an easy way to configure and run the server with arguments defined in config file. It uses configuration files to define server settings and executes commands to run llma.cpp servers.
 
+## Basic Usage
+```
+    ./llama-server -m your_model.gguf --port 8080
+
+    # Basic web UI can be accessed via browser: http://host:port
+    # Chat completion endpoint: http://host:port/v1/chat/completions
+```
+
 ## Features
 
 - **Dynamic Configuration**: Uses YAML configuration files to define LLM server settings.
