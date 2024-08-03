@@ -12,12 +12,13 @@ func main() {
 
 	serverName := "llm_cli_v2"
 
-	errChan := make(chan error)
-	go func(name string) {
-		errChan <- llamago.LlamaRun(name)
-	}(serverName)
+	// errChan := make(chan error)
+	// go func(name string) {
+	// 	errChan <- llamago.LlamaRun(name)
+	// }(serverName)
 
-	err := <-errChan
+	// err := <-errChan
+	err := llamago.LlamaRun(serverName)
 	if err != nil {
 		log.Fatal().Msgf("Error running llama-go, %v", err)
 	}

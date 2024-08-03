@@ -1,7 +1,6 @@
 package llamago
 
 import (
-	"fmt"
 	"reflect"
 
 	"github.com/rs/zerolog/log"
@@ -26,7 +25,7 @@ type ModelConfig struct {
 	SystemPromptFile string `mapstructure:"system-prompt-file"`
 	ChatTemplate     string `mapstructure:"chat-template"`
 	Prompt           string `mapstructure:"prompt"`
-	Temperature      string `mapstructure:"temperature"`
+	Temperature      string `mapstructure:"temp"`
 	TopK             string `mapstructure:"top-k"`
 	TopP             string `mapstructure:"top-p"`
 	RepeatPenalty    string `mapstructure:"repeat_penalty"`
@@ -68,7 +67,7 @@ func (m ModelConfig) GetArguments() []string {
 
 		prompt := m.Prompt
 		// add double quotes aroung the prompt string
-		promptStr := fmt.Sprintf("\"%s\"", prompt)
+		promptStr := `"` + prompt + `"`
 		if argName == "--prompt" && argValue.String() == "" {
 			log.Error().Msgf("Prompt is required")
 			return []string{}
