@@ -8,6 +8,7 @@
     ./llama-go
 
     # Basic web UI can be accessed via browser: http://host:port
+    # New WebUi http://host:port/index-new.html
     # Chat completion endpoint: http://host:port/v1/chat/completions
 ```
 
