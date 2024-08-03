@@ -1,6 +1,7 @@
 package llamago
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/rs/zerolog/log"
@@ -67,7 +68,7 @@ func (m ModelConfig) GetArguments() []string {
 
 		prompt := m.Prompt
 		// add double quotes aroung the prompt string
-		promptStr := "\"" + prompt + "\""
+		promptStr := fmt.Sprintf("\"%s\"", prompt)
 		if argName == "--prompt" && argValue.String() == "" {
 			log.Error().Msgf("Prompt is required")
 			return []string{}
