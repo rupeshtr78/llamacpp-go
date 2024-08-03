@@ -21,7 +21,7 @@ func (l *LlamaModelStrategy) Execute() error {
 	args := l.ModelConfig.GetArguments()
 	log.Info().Msgf("Executing llama-cli with args: %v", args)
 
-	cmd := exec.Command(constants.LlamaCppCli, args...)
+	cmd := exec.Command(constants.LlamaCppServer, args...)
 	log.Info().Msgf("Running executable %s", constants.LlamaCppCli)
 	log.Debug().Msgf("Command: %v", cmd.String())
 
