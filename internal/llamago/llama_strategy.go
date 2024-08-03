@@ -2,6 +2,7 @@ package llamago
 
 import (
 	"bufio"
+	"fmt"
 	"llama-go/internal/constants"
 	"os/exec"
 
@@ -41,7 +42,7 @@ func (l *LlamaModelStrategy) Execute() error {
 	scanner := bufio.NewScanner(stdoutPipe)
 	for scanner.Scan() {
 		output := scanner.Text()
-		log.Info().Msgf("Output: %s", output)
+		fmt.Println(output)
 	}
 
 	// Check for errors while reading the output
