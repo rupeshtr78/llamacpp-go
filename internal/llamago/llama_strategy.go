@@ -1,7 +1,7 @@
 package llamago
 
 import (
-	"bytes"
+	"bufio"
 	"llama-go/internal/constants"
 	"os/exec"
 
@@ -37,10 +37,16 @@ func (l *LlamaModelStrategy) Execute() error {
 		return err
 	}
 
-	// Read the output from the pipe
-	outputBuf := new(bytes.Buffer)
-	if _, err := outputBuf.ReadFrom(stdoutPipe); err != nil {
-		log.Error().Err(err).Msgf("Error reading stdout for %s", constants.LlamaCppServer)
+	// Stream the output in real-time
+	scanner := bufio.NewScanner(stdoutPipe)
+	for scanner.Scan() {
+		output := scanner.Text()
+		log.Info().Msgf("Output: %s", output)
+	}
+
+	// Check for errors while reading the output
+	if err := scanner.Err(); err != nil {
+		log.Error().Err(err).Msg("Error reading command output")
 		return err
 	}
 
@@ -49,10 +55,6 @@ func (l *LlamaModelStrategy) Execute() error {
 		log.Error().Err(err).Msgf("Command %s did not finish successfully", constants.LlamaCppServer)
 		return err
 	}
-
-	// Log or handle the output
-	output := outputBuf.String()
-	log.Info().Msgf("Output: %s", output)
 
 	return nil
 }
