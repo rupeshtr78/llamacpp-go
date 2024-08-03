@@ -2,6 +2,6 @@ package constants
 
 const (
 	LlamaCppCli    = "llama-cli"
-	LlamaCppServer = "llm-server"
+	LlamaCppServer = "llama-server"
 	TemplateFile   = "internal/prompts/prompt_template.txt"
 )
