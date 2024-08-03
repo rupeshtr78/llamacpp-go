@@ -12,6 +12,7 @@
 
 - Go 1.20 or higher
 - `llama-cli` command-line tool (ensure it's installed and available in your PATH)
+- Follow instructions from [llama.cpp](https://github.com/ggerganov/llama.cpp)] git repo to install the binaries.
 
 ## Installation
 
