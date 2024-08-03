@@ -10,7 +10,7 @@ import (
 func main() {
 	fmt.Println("Hello, llama-go")
 
-	serverName := "llm_cli_v2"
+	serverName := "llm_server_v2"
 
 	errChan := make(chan error)
 	go func(name string) {

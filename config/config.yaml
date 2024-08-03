@@ -46,11 +46,10 @@ servers:
     seed: 1234  # RNG seed
     system-prompt-file: internal/prompts/system_prompt_llm_expert.tmpl  # System prompt file
     # chat-template: /path/to/your/chat_template.txt  # Chat template file JINJA2
-    prompt: "what is quantization"  # user prompt
     temp: "0.8"  # Temperature
     top-k: "40"  # Top-k sampling
     top-p: "0.9"  # Top-p sampling
-    repeat_penalty: "1.0"  # Repeat penalty
+    repeat_penalty: "1.5"  # Repeat penalty
     gpu-layers: "10"  # Number of GPU layers
 
 
