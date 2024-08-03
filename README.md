@@ -4,7 +4,8 @@
 
 ## Basic Usage
 ```
-    ./llama-server -m your_model.gguf --port 8080
+     go build ./cmd/main.go
+    ./llama-go
 
     # Basic web UI can be accessed via browser: http://host:port
     # Chat completion endpoint: http://host:port/v1/chat/completions
