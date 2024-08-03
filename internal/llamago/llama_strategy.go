@@ -1,6 +1,7 @@
 package llamago
 
 import (
+	"bytes"
 	"llama-go/internal/constants"
 	"os/exec"
 
@@ -23,10 +24,35 @@ func (l *LlamaModelStrategy) Execute() error {
 	log.Info().Msgf("Running executable %s", constants.LlamaCppCli)
 	log.Debug().Msgf("Command: %v", cmd.String())
 
-	err := cmd.Run()
+	// Get the output pipe
+	stdoutPipe, err := cmd.StdoutPipe()
 	if err != nil {
-		log.Error().Err(err).Msgf("Failed to run %s", constants.LlamaCppServer)
-
+		log.Error().Err(err).Msgf("Failed to get stdout pipe for %s", constants.LlamaCppServer)
+		return err
 	}
-	return err
+
+	// Start the command
+	if err := cmd.Start(); err != nil {
+		log.Error().Err(err).Msgf("Failed to start %s", constants.LlamaCppServer)
+		return err
+	}
+
+	// Read the output from the pipe
+	outputBuf := new(bytes.Buffer)
+	if _, err := outputBuf.ReadFrom(stdoutPipe); err != nil {
+		log.Error().Err(err).Msgf("Error reading stdout for %s", constants.LlamaCppServer)
+		return err
+	}
+
+	// Wait for the command to finish
+	if err := cmd.Wait(); err != nil {
+		log.Error().Err(err).Msgf("Command %s did not finish successfully", constants.LlamaCppServer)
+		return err
+	}
+
+	// Log or handle the output
+	output := outputBuf.String()
+	log.Info().Msgf("Output: %s", output)
+
+	return nil
 }
