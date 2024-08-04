@@ -29,6 +29,7 @@ type ModelConfig struct {
 	RepeatPenalty    string `mapstructure:"repeat_penalty"`
 	GPULayers        string `mapstructure:"gpu-layers"`
 	MiroStat         string `mapstructure:"mirostat"`
+	TensorSplit      string `mapstructure:"tensor-split"`
 }
 
 func (m ModelConfig) GetArguments() []string {
