@@ -34,7 +34,7 @@ servers:
     gpu-layers: "10"  # Number of GPU layers
     prompt: "In the context of LLMs, what is quantization"  # user prompt
   - name: llm_server_v2
-    model: /data/ai/lmstudio/lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF/Meta-Llama-3.1-8B-Instruct-Q8_0.gguf  # Model path
+    model: /data/ai/lmstudio/Qwen/qwen2-72b.gguf
     host: 0.0.0.0  # Host address
     port: 50054  # Port number
     threads: 40  # Number of threads
