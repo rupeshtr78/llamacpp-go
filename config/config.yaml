@@ -44,7 +44,7 @@ servers:
     # api_key: your_api_key  # API key
     verbose: true  # Verbose output
     seed: 1234  # RNG seed
-    system-prompt-file: internal/prompts/system_prompt_llm_expert.txt  # System prompt file
+    system-prompt-file: internal/prompts/system_prompt_readme.txt  # System prompt file
     # chat-template: /path/to/your/chat_template.txt  # Chat template file JINJA2
     temp: "0.8"  # Temperature
     top-k: "40"  # Top-k sampling
