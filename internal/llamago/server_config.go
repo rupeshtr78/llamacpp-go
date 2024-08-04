@@ -30,6 +30,7 @@ type ModelConfig struct {
 	GPULayers        string `mapstructure:"gpu-layers"`
 	MiroStat         string `mapstructure:"mirostat"`
 	TensorSplit      string `mapstructure:"tensor-split"`
+	Parallel         string `mapstructure:"parallel"`
 }
 
 func (m ModelConfig) GetArguments() []string {

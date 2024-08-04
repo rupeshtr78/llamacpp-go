@@ -44,15 +44,16 @@ servers:
     # api_key: your_api_key  # API key
     verbose: true  # Verbose output
     seed: 1234  # RNG seed
-    system-prompt-file: internal/prompts/system_prompt_readme.txt  # System prompt file
+    system-prompt-file: internal/prompts/system_prompt_coding.txt  # System prompt file
     # chat-template: /path/to/your/chat_template.txt  # Chat template file JINJA2
-    temp: "0.8"  # Temperature
-    top-k: "40"  # Top-k sampling
-    top-p: "0.9"  # Top-p sampling
-    repeat_penalty: "1.5"  # Repeat penalty
+    temp: "0.7"  # Temperature
+    top-k: "30"  # Top-k sampling
+    top-p: "0.8"  # Top-p sampling
+    repeat_penalty: "1"  # Repeat penalty
     gpu-layers: "30"  # Number of GPU layers
-    mirostat: 1 # controlling perplexity during text generation.0 is disabled, 1 is Mirostat, and 2 is Mirostat 2.0.
+    # mirostat: 2 # controlling perplexity during text generation.0 is disabled, 1 is Mirostat, and 2 is Mirostat 2.0.
     tensor-split: "0.3,0.7" # fraction of the model to offload to each GPU
+    parallel: 4 # number of parallel sequences to decode (default: 1)
     
 
 
