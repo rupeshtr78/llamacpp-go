@@ -52,7 +52,6 @@ servers:
     repeat_penalty: "1.5"  # Repeat penalty
     gpu-layers: "40"  # Number of GPU layers
     mirostat: 1 # controlling perplexity during text generation.0 is disabled, 1 is Mirostat, and 2 is Mirostat 2.0.
-    stream: "true"  # Stream output
     
 
 
