@@ -28,6 +28,8 @@ type ModelConfig struct {
 	TopP             string `mapstructure:"top-p"`
 	RepeatPenalty    string `mapstructure:"repeat_penalty"`
 	GPULayers        string `mapstructure:"gpu-layers"`
+	MiroStat         string `mapstructure:"mirostat"`
+	Stream           string `mapstructure:"stream"`
 }
 
 func (m ModelConfig) GetArguments() []string {
