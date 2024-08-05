@@ -50,6 +50,7 @@ func (m ModelConfig) GetArguments() []string {
 		argValue := argValues.Field(i)
 
 		// if m.Embedding is false, skip adding the --embedding flag to the args
+		// @TODO: this is a hack, add switch case for all the flags
 		if argName == "--embedding" && !argValue.Bool() {
 			continue
 		} else if argName == "--embedding" && argValue.Bool() {
